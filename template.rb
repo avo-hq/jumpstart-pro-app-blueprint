@@ -1,7 +1,4 @@
 # Insert templates here
-files = {
-  "path": "contents"
-}
 
 # === Fetch the Avo edition ===
 question = <<~QUESTION
@@ -33,7 +30,7 @@ when "advanced"
 end
 
 # === Run bundle install ===
-Bundler.with_unbundled_env { run 'bundle install' }
+Bundler.with_unbundled_env { run "bundle install" }
 
 # === Add route ===
 route "mount Avo::Engine, at: Avo.configuration.root_path"
