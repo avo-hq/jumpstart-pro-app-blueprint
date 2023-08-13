@@ -33,7 +33,15 @@ end
 Bundler.with_unbundled_env { run "bundle install" }
 
 # === Add route ===
-route "mount Avo::Engine, at: Avo.configuration.root_path"
+route_contents = <<-ROUTES
+  # Avo admin panel
+  if defined?(Avo::Engine)
+    authenticated :user, lambda { |u| u.admin? } do
+      mount Avo::Engine, at: Avo.configuration.root_path
+    end
+  end
+ROUTES
+route route_contents
 
 # === Copy template files ===
 files.each do |path, contents|
