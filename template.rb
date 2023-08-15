@@ -1,22 +1,32 @@
 # Insert templates here
 
-# === Fetch the Avo edition ===
-question = <<~QUESTION
-  What version of Avo would you like to install?
-  1. Avo Community (default)
-  2. Avo Pro
-  3. Avo Advanced
-QUESTION
+if ARGV.include? "--community-edition"
+  edition = "community"
+elsif ARGV.include? "--pro-edition"
+  edition = "pro"
+elsif ARGV.include? "--advanced-edition"
+  edition = "advanced"
+end
 
-answer = ask(question, default: "1", limited_to: ["1", "2", "3"])
+unless edition
+  # === Fetch the Avo edition ===
+  question = <<~QUESTION
+    What version of Avo would you like to install?
+    1. Avo Community (default)
+    2. Avo Pro
+    3. Avo Advanced
+  QUESTION
 
-edition = case answer
-when "1"
-  "community"
-when "2"
-  "pro"
-when "3"
-  "advanced"
+  answer = ask(question, default: "1", limited_to: ["1", "2", "3"])
+
+  edition = case answer
+  when "1"
+    "community"
+  when "2"
+    "pro"
+  when "3"
+    "advanced"
+  end
 end
 
 # === Add gem to Gemfile ===
