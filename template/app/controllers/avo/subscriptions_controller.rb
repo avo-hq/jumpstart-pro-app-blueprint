@@ -1,3 +1,3 @@
 class Avo::SubscriptionsController < Avo::ResourcesController
-  include Jumpstart::AdminHelpers
+  include Jumpstart::AdminPanelHelpers
 end
