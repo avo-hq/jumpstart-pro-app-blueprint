@@ -6,7 +6,7 @@ Avo.configure do |config|
   # config.prefix_path = "/internal"
 
   # Where should the user be redirected when visting the `/avo` url
-  config.home_path = "/dashboards/overview"
+  config.home_path = defined?(Avo::Pro) ? "/avo/dashboards/overview" : nil
 
   ## == Licensing ==
   # Add your license key here for Pro or Advanced licenses
