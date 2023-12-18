@@ -1,4 +1,4 @@
-class Avo::Cards::TotalRevenue < Avo::Dashboards::MetricCard
+class Avo::Cards::TotalRevenue < Avo::Cards::MetricCard
   self.id = "total_revenue"
   self.label = "Total revenue"
   self.prefix = "$"
