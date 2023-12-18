@@ -11,17 +11,19 @@ class Avo::Resources::PaymentMethod < Avo::BaseResource
   }
 
   def fields
-    field :id, as: :id
-    field :customer, as: :belongs_to
-    field :processor_id, as: :text
-    field :type, as: :text
-    field :default, as: :boolean
-    field :data, as: :key_value
+    main_panel do
+      field :id, as: :id
+      field :customer, as: :belongs_to
+      field :processor_id, as: :text
+      field :type, as: :text
+      field :default, as: :boolean
+      field :data, as: :key_value
 
-    sidebar do
-      field :extra_billing_info, as: :key_value
-      field :created_at, as: :date_time
-      field :updated_at, as: :date_time
+      sidebar do
+        field :extra_billing_info, as: :key_value
+        field :created_at, as: :date_time
+        field :updated_at, as: :date_time
+      end
     end
   end
 end

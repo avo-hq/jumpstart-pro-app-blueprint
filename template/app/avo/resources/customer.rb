@@ -12,22 +12,24 @@ class Avo::Resources::Customer < Avo::BaseResource
   self.model_class = Pay::Customer
 
   def fields
-    field :id, as: :id
-    field :owner, as: :belongs_to, polymorphic_as: :owner, types: [::Account]
+    main_panel do
+      field :id, as: :id
+      field :owner, as: :belongs_to, polymorphic_as: :owner, types: [::Account]
 
-    field :processor, as: :badge, options: {success: "stripe"}
-    field :processor_id, as: :text, format_using: -> do
-      link_to(value, view_context.controller.customer_processor_url(model), target: :_blank)
-    rescue
-      value
-    end
-    field :default, as: :boolean
-    field :data, as: :key_value
+      field :processor, as: :badge, options: {success: "stripe"}
+      field :processor_id, as: :text, format_using: -> do
+        link_to(value, view_context.controller.customer_processor_url(model), target: :_blank)
+      rescue
+        value
+      end
+      field :default, as: :boolean
+      field :data, as: :key_value
 
-    sidebar do
-      field :created_at, as: :date_time
-      field :updated_at, as: :date_time
-      field :deleted_at, as: :date_time
+      sidebar do
+        field :created_at, as: :date_time
+        field :updated_at, as: :date_time
+        field :deleted_at, as: :date_time
+      end
     end
 
     tabs do

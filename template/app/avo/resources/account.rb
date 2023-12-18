@@ -12,24 +12,26 @@ class Avo::Resources::Account < Avo::BaseResource
   }
 
   def fields
-    field :id, as: :id
-    field :avatar,
-      as: :file,
-      is_image: true,
-      link_to_resource: true,
-      rounded: true,
-      hide_on: :forms
-    field :owner, as: :belongs_to
-    field :name, as: :text
-    field :personal, as: :boolean
-    field :users_count, as: :text do
-      record.users.length
-    end
+    main_panel do
+      field :id, as: :id
+      field :avatar,
+        as: :file,
+        is_image: true,
+        link_to_resource: true,
+        rounded: true,
+        hide_on: :forms
+      field :owner, as: :belongs_to
+      field :name, as: :text
+      field :personal, as: :boolean
+      field :users_count, as: :text do
+        record.users.length
+      end
 
-    sidebar do
-      field :extra_billing_info, as: :textarea
-      field :created_at, as: :date_time
-      field :updated_at, as: :date_time
+      sidebar do
+        field :extra_billing_info, as: :textarea
+        field :created_at, as: :date_time
+        field :updated_at, as: :date_time
+      end
     end
 
     tabs do
