@@ -33,7 +33,7 @@ class Avo::Resources::Plan < Avo::BaseResource
       sidebar do
         field :created_at, as: :date_time
         field :updated_at, as: :date_time
-        heading "Processor details"
+        field :processor_details, as: :heading, label: "Processor details"
         field :stripe_id, as: :text, format_using: -> do
           if view == :edit || view == :new
             value
