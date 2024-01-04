@@ -11,13 +11,21 @@ end
 unless edition
   # === Fetch the Avo edition ===
   question = <<~QUESTION
-    What version of Avo would you like to install?
+
+
+    Which version of Avo would you like to install?
     1. Avo Community (default)
     2. Avo Pro
     3. Avo Advanced
-  QUESTION
 
-  answer = ask(question, default: "1", limited_to: ["1", "2", "3"])
+    More information about version features here:
+    https://avohq.io/pricing
+
+
+  QUESTION
+  puts question
+
+  answer = ask("Which version of Avo would you like to install?", default: "1", limited_to: ["1", "2", "3"])
 
   edition = case answer
   when "1"
