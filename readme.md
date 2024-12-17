@@ -1,5 +1,7 @@
 # Avo 3 to Jumpstart Pro template
 
+See more at: [avohq.io/blueprints](https://avohq.io/blueprints)
+
 ## Happening
 
 1. Add to the `Gemfile`. Possibly to show a choice for `avo`, `pro` or `advanced`. `gem "avo", ">= 3.1"`
